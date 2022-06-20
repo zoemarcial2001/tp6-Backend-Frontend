@@ -1,0 +1,85 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-9">
+            <form class="row">
+                <h3 class="display-4 text-center">Transacciones</h3>
+                <select [(ngModel)]="origen" name="origen" class="btn btn-outline-dark col-1 m-1" aria-label="Default select example">
+                    <option selected> </option>
+                    <option *ngFor="let d of divisas">{{d | uppercase}}</option>
+                </select>
+                <select [(ngModel)]="destino" name="destino" class="btn btn-outline-dark col-1 m-1" aria-label="Default select example">
+                    <option selected> </option>
+                    <option *ngFor="let d of divisas">{{d | uppercase}}</option>
+                </select>
+                <button type="button" class="btn btn-dark col-2 m-1" (click)="filtrarTransacciones()" [disabled]="!origen.length || !destino.length">Ver</button>
+                <button type="button" class="btn btn-dark col-2 m-1" (click)="limpiar()">Ver Todos</button>
+            </form>
+            
+            <div class="table table-responsive">
+                <table class="table table-hover table-bordered text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Moneda Origen</th>
+                            <th>Cantidad Origen</th>
+                            <th>Tasa Conversion</th>
+                            <th>Moneda Destino</th>
+                            <th>Cantidad Destino</th>
+                            <th>Email Cliente</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let t of transacciones">
+                            <td>{{t._id}}</td>
+                            <td>{{t.monedaOrigen}}</td>
+                            <td>{{t.cantidadOrigen | currency}}</td>
+                            <td>{{t.tasaConversion}} %</td>
+                            <td>{{t.monedaDestino}}</td>
+                            <td>{{t.cantidadDestino | currency}}</td>
+                            <td>{{t.emailCliente}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot *ngIf="!transacciones.length">
+                        <td class="lead" colspan="7">No existe ninguna transaccion para origen:{{origen}} destino: {{destino}}</td>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="col-3">
+            <form class="bg-dark text-white">
+                <br>
+                <h4 class="text-center">Hacer Transaccion: </h4>
+                <div class="mb-2 m-3">
+                    <label for="monto" class="form-label">Monto: </label>
+                    <input type="number" id="monto" name="monto" [(ngModel)]="transaccion.cantidadOrigen" class="form-control">
+                </div>
+                <div class="mb-2 m-3">
+                    <label for="origentrans" class="form-label">De: </label>
+                    <select [(ngModel)]="transaccion.monedaOrigen" name="origentrans" id="origentrans" class="form-select" aria-label="Default select example">
+                        <option *ngFor="let d of divisas">{{d}}</option>
+                    </select>
+                </div>
+                <div class="mb-2 m-3">
+                    <label for="destinotrans" class="form-label">A: </label>
+                    <select [(ngModel)]="transaccion.monedaDestino" name="destinotrans" id="destinotrans" class="form-select" aria-label="Default select example">
+                        <option *ngFor="let d of divisas">{{d}}</option>
+                    </select>
+                </div>
+                <div class="mb-2 m-3">
+                    <label for="email">Ingrese su Email: </label>
+                    <input type="email" id="email" name="email" class="form-control" [(ngModel)]="transaccion.emailCliente">
+                </div>
+                <div class="mb-2 m-3">
+                    <label for="resultado">Conversion: </label>
+                    <textarea name="cantDest" id="resultado" class="form-control" disabled>{{transaccion.cantidadDestino}}</textarea>
+                </div>
+                <div class="mb-2 m-3 text-center">
+                    <button class="btn btn-lg btn-light " type="button" (click)="guardarTransaccion()" >Convertir</button>
+                    <br>
+                    <br>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

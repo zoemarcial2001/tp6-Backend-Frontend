@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-black">
+    <div class="container-fluid">
+        <a class="navbar-brand">Tp6 Backend-Frontend</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdownMenuButtonLibro" data-bs-toggle="dropdown" aria-expanded="false">Libros
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonLibro">
+                        <li><a class="dropdown-item" [routerLink]="['cargarLibro']">Agregar Libro</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['libros']">Ver Libros</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdownMenuButtonTrans" data-bs-toggle="dropdown" aria-expanded="false">Transacciones</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonTrans">
+                        <li><a class="dropdown-item" [routerLink]="['transaccion']">Ver Transacciones</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['transaccion/generar']">Agregar Transaccion</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdownMenuButtonPasaje" data-bs-toggle="dropdown" aria-expanded="false">Pasajes
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonPasaje">
+                        <li><a class="dropdown-item" [routerLink]="['pasaje']">Ver Pasajes</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['pasaje/crear']">Agregar Pasaje</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

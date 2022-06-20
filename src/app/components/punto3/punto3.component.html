@@ -1,0 +1,32 @@
+<h4 class="display-3 text-center">Lista Pasajes</h4>
+<table class="table table-hover table-bordered text-center">
+  <thead class="table-dark ">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Categoria Pasajero</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Fecha de Compra</th>
+      <th scope="col">Pasajero</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of pasajes">
+      <td>{{p._id}}</td>
+      <td>{{p.categoriaPasajero}}</td>
+      <td>{{p.precioPasaje}}</td>
+      <td>{{p.fechaCompra}}</td>
+      <td>
+        <ul class="text-start">
+          <li>Nombre y Apellido: {{p.pasajero.nombre}} {{p.pasajero.apellido}}</li>
+          <li>DNI: {{p.pasajero.nro_documento}}</li>
+          <li>Email: {{p.pasajero.email}}</li>
+        </ul>
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary" (click)="modificarPasaje(p)">Modificar</button>
+        <button type="button" class="btn btn-danger" (click)="eliminar(p._id)">Eliminar</button>
+      </td>
+  </tr>
+  </tbody>
+</table>

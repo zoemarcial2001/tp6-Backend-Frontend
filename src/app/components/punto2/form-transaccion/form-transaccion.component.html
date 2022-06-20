@@ -1,0 +1,37 @@
+<h3 class="display-4 text-center">Generador de Transacciones</h3>
+<div class="card">
+    <form class="card-body">
+        <div class="mb-3">
+            <label for="cantidadOrigen" class="form-label">Cantidad</label>
+            <input [(ngModel)]="cantOrigen" (change)="convertir=false" type="number" class="form-control" name="cantidadOrigen" id="cantidadOrigen" min="0">
+        </div>
+        <div class="mb-3">
+
+            <label for="tasaConversion" class="form-label">Tasa de Conversion: </label>
+            <input type="number" class="form-control" name="tasaConversion" id="tasaConversion" [(ngModel)]="tasa" (change)="convertir=false" min="0">
+        </div>
+        <div class="mb-3">
+
+            <label for="monedaOrigen" class="form-label">De</label>
+            <select [(ngModel)]="divOrigen" (change)="convertir=false" class="form-select" name="monedaOrigen" id="monedaOrigen">
+                <option [value]="option" *ngFor="let option of divisas">{{option}}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+
+            <label for="monedaDestino" class="form-label">A</label>
+            <select [(ngModel)]="divDestino" (change)="convertir=false" name="monedaDestino" class="form-select" id="monedaDestino">
+                <option [value]="option" *ngFor="let option of divisas">{{option}}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+
+            <label for="emailCliente" class="form-label">Email</label>
+            <input type="email" name="emailCliente" id="emailCliente" class="form-control" [(ngModel)]="email">
+        </div>
+        <div class="mb-3" *ngIf="convertir && cantDestino!==0">
+            <label class="form-label">Conversion: {{cantDestino}}</label>
+        </div>
+            <button type="button" class="btn btn-dark d-flex" [disabled]="convertir" (click)="generar()">Convertir</button>
+    </form>
+</div>

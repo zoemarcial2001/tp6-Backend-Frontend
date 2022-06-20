@@ -1,0 +1,28 @@
+<h4 class="display-4 text-center">Agregar Libro</h4>
+<div class="card">
+    <div class="card-body">
+        <form >
+            <div class="mb-3">
+                <label for="titulo" class="form-label" >Titulo</label>
+                <input type="text" class="form-control" id="titulo" [(ngModel)]="libro.titulo" name="titulo">
+              </div>
+              <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripcion</label>
+                <input type="text" class="form-control" id="descripcion" [(ngModel)]="libro.descripcion" name="descripcion">
+              </div>
+              <div class="mb-3">
+                <label for="img" class="form-label">Ingrese Link de la Imagen</label>
+                <input type="url" class="form-control" id="img" [(ngModel)]="libro.imagen" name="img">
+              </div>
+              <div class="mb-3">
+                <label for="stock" class="form-label">Stock</label>
+                <input type="number" class="form-control" id="stock" [(ngModel)]="libro.stock" name="stock">
+              </div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="dest" [(ngModel)]="libro.destacado">
+                <label class="form-check-label" for="exampleCheck1">Destacado</label>
+              </div>
+            <button type="button" class="btn btn-dark" (click)="cargarLibro()">Agregar Libro</button>
+            </form>
+    </div>
+</div>

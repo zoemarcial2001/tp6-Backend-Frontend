@@ -1,0 +1,40 @@
+<div *ngIf="action" class="text-center">
+  <h3 class="display-4">Modificar Pasaje</h3>
+</div>
+<div *ngIf="!action" class="text-center">
+  <h3 class="display-4">Agregar Pasaje</h3>
+</div>
+<div class="card">
+    <div class="card-body">
+        <form >
+            <div class="mb-3">
+                <label for="catPas" class="form-label" >Categoria Pasajero</label>
+                <select class="form-select" aria-label="Default select example" [(ngModel)]="pasaje.categoriaPasajero" name="catPas">
+                  <option value="m">Menor</option>
+                  <option value="a">Adulto</option>
+                  <option value="j">Jubilado</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="pasajero" class="form-label">Pasajero: </label>
+                <select class="form-select" aria-label="Default select example" [(ngModel)]="pasaje.pasajero" name="pasajero">
+                  <option *ngFor="let per of personas" [ngValue]="per">{{per.nombre}} {{per.apellido}}</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="precio" class="form-label">Precio</label>
+                <input type="number" class="form-control" id="precio" [(ngModel)]="pasaje.precioPasaje" name="precio">
+              </div>
+              <div class="mb-3">
+                <label for="total" > Total: </label>
+                <label for="form-label">El precio total es: {{calcularTotal() | currency}}</label>
+              </div>
+              <div *ngIf="action">
+                <button type="button" class="btn btn-dark" (click)="modificarPasaje()">Modificar Pasaje</button>
+              </div>
+              <div *ngIf="!action">
+                <button type="button" class="btn btn-dark" (click)="guardarPasaje()">Agregar Pasaje</button>
+              </div>
+            </form>
+    </div>
+</div>
